@@ -9,6 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
 		HelloWorldPanel.createOrShow(context.extensionUri);
 	})
   );
+  
 
   context.subscriptions.push(
     vscode.commands.registerCommand("to-do-list.askAQuestion", async () => {
