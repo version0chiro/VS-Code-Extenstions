@@ -26,7 +26,23 @@
 </ul>
 
 <div>text: {text}</div>
-<button on:click={() => (text = " ")}>Reset</button>
+<button
+  on:click={() => {
+    tsvscode.postMessage({
+      type: "onInfo",
+      value: " info meesage",
+    });
+  }}>Send Message</button
+>
+
+<button
+  on:click={() => {
+    tsvscode.postMessage({
+      type: "onError",
+      value: "error meesage",
+    });
+  }}>Send Error</button
+>
 
 <style>
   .complete {
