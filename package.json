@@ -13,6 +13,7 @@
     "onCommand:to-do-list.helloWorld",
     "onCommand:to-do-list.askAQuestion",
     "onCommand:to-do-list.refreshWeb",
+    "onCommand:to-do-list.addToDo",
     "onView:vs-to-do-sidebar"
   ],
   "main": "./dist/extension.js",
@@ -51,6 +52,10 @@
         "command": "to-do-list.refreshWeb",
         "category": "VSTodo",
         "title": "Refresh"
+      },{
+        "command": "to-do-list.addToDO",
+        "category": "VSTodo",
+        "title": "Add ToDo from extension"
       }
     ]
   },
