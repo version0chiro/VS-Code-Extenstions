@@ -11,9 +11,39 @@ export function activate(context: vscode.ExtensionContext) {
     )
   );
 
+  const item = vscode.window.createStatusBarItem(
+    vscode.StatusBarAlignment.Right
+  );
+
+  item.text = "$(beaker) Add to do!";
+  item.command = "to-do-list.addToDo";
+  item.show();
+  
   context.subscriptions.push(
     vscode.commands.registerCommand("to-do-list.helloWorld", () => {
       HelloWorldPanel.createOrShow(context.extensionUri);
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("to-do-list.addToDo", () => {
+      const { activeTextEditor } = vscode.window;
+
+      if (!activeTextEditor) {
+        vscode.window.showInformationMessage("No activeTextEditor");
+        return;
+      }
+
+      const text = activeTextEditor.document.getText(
+        activeTextEditor.selection
+      );
+
+      vscode.window.showInformationMessage("Text: " + text);
+
+      sidebarProvider._view?.webview.postMessage({
+        type: "new-todo",
+        value: text,
+      });
     })
   );
   context.subscriptions.push(

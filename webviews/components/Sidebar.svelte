@@ -1,6 +1,19 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   let todos: Array<{ text: string; completed: boolean }> = [];
   let text = "";
+
+  onMount(() => {
+    window.addEventListener("message", (event) => {
+      const message = event.data; // The json data that the extension sent
+      switch (message.type) {
+        case "new-todo":
+          todos = [{text:message.value,completed:false},...todos,];
+          break;
+      }
+    });
+  });
 </script>
 
 <form
@@ -26,6 +39,7 @@
 </ul>
 
 <div>text: {text}</div>
+
 <button
   on:click={() => {
     tsvscode.postMessage({

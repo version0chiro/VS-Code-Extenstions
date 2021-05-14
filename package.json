@@ -53,7 +53,7 @@
         "category": "VSTodo",
         "title": "Refresh"
       },{
-        "command": "to-do-list.addToDO",
+        "command": "to-do-list.addToDo",
         "category": "VSTodo",
         "title": "Add ToDo from extension"
       }
