@@ -43,7 +43,10 @@ const main = async () => {
           user.name = profile.displayName;
           await user.save();
         } else {
-          user = await User.create({ name: profile.displayName }).save();
+          user = await User.create({
+            name: profile.displayName,
+            githubid: profile.id,
+          }).save();
         }
         profile.id;
         User.create;
@@ -66,9 +69,10 @@ const main = async () => {
   app.get(
     "/auth/github/callback",
     passport.authenticate("github", { session: false }),
-    function (_req, res) {
+    function (req:any, res) {
       // Successful authentication, redirect home.
-      res.send("You logged in successfully!");
+      res.send(req.user.accessToken);
+      res.redirect(`http://localhost:54321/auth/${req.user.accessToken}`);
     }
   );
   app.get("/", (_req, res) => {
