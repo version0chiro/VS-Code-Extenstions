@@ -14,6 +14,7 @@
     "onCommand:to-do-list.askAQuestion",
     "onCommand:to-do-list.refreshWeb",
     "onCommand:to-do-list.addToDo",
+    "onCommand:to-do-list.authenticate",
     "onView:vs-to-do-sidebar"
   ],
   "main": "./dist/extension.js",
@@ -56,6 +57,11 @@
         "command": "to-do-list.addToDo",
         "category": "VSTodo",
         "title": "Add ToDo from extension"
+      }
+      ,{
+        "command": "to-do-list.authenticate",
+        "category": "VSTodo",
+        "title": "Authenticate"
       }
     ]
   },

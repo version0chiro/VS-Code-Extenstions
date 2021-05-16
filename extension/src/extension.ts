@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { authenticate } from "./authenticate";
 import { HelloWorldPanel } from "./HelloWorldPanel";
 import { SidebarProvider } from "./SidebarProvider";
 
@@ -22,6 +23,11 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("to-do-list.helloWorld", () => {
       HelloWorldPanel.createOrShow(context.extensionUri);
+    })
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("to-do-list.authenticate", () => {
+      authenticate();
     })
   );
 
